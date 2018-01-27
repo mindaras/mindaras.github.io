@@ -170,6 +170,8 @@ function init() {
   document.querySelector('.radio-wrapper.second').style.display = 'block';
   document.getElementById('score-choice').style.display = 'block';
 
+  document.querySelector('.radio-1').checked = true;
+
   document.getElementById('score-choice').value = '';
   document.getElementById('score-0').textContent = 0;
   document.getElementById('score-1').textContent = 0;
