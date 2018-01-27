@@ -9,7 +9,7 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer, diceDOM, gamePlaying;
+var scores, roundScore, activePlayer, diceDOM, gamePlaying, sixCounter;
 
 diceDOM  = document.querySelector('.dice');
 
@@ -32,6 +32,25 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     if (dice !== 1) {
       roundScore += dice;
       document.getElementById('current-' + activePlayer).textContent = roundScore;
+
+      // if rolled two 6 in a row reset the global score and change turn
+      if (dice === 6 && sixCounter === 1) {
+        // reset the counter
+        sixCounter = 0;
+        // reset the global score
+        scores[activePlayer] = 0;
+        // update the ui
+        document.getElementById('score-' + activePlayer).textContent = 0;
+        // change turn
+        nextPlayer();
+      } else if (dice === 6) {
+        // if previous dice was not 6 increase the six counter
+        sixCounter += 1;
+      } else {
+        // if the dice is not 6 reset the counter
+        sixCounter = 0;
+      }
+
     } else {
       // next player
       nextPlayer();
@@ -72,6 +91,8 @@ document.querySelector('.btn-new').addEventListener('click', init);
 function nextPlayer() {
   // reset roundscore
   roundScore = 0;
+  // reset six counter
+  sixCounter = 0;
 
   // remove all the score from the active player
   document.getElementById('current-' + activePlayer).textContent = 0;
@@ -93,6 +114,7 @@ function init() {
   roundScore = 0;
   activePlayer = 0;
   gamePlaying = true;
+  sixCounter = 0;
 
   document.querySelector('.dice').style.display = 'none';
 
