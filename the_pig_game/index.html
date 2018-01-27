@@ -28,13 +28,23 @@
                 </div>
             </div>
 
+            <div class="radio-wrapper">
+              <input name="dices" type="radio" value="1" class="radio radio-1" checked>
+              <label for="" class="radio-label">One dice</label>
+            </div>
+            <div class="radio-wrapper second">
+              <input name="dices" type="radio" value="2" class="radio radio-2">
+              <label for="" class="radio-label">Two dices</label>
+            </div>
+
             <button class="btn-new"><i class="ion-ios-plus-outline"></i>New game</button>
             <input class="user-score" type="number" placeholder="Score to win" id="score-choice">
             <button class="btn-score">Submit</button>
             <button class="btn-roll"><i class="ion-ios-loop"></i>Roll dice</button>
             <button class="btn-hold"><i class="ion-ios-download-outline"></i>Hold</button>
 
-            <img src="dice-5.png" alt="Dice" class="dice">
+            <img src="dice-5.png" alt="Dice" class="dice dice-1">
+            <img src="dice-5.png" alt="Dice" class="dice dice-2">
         </div>
 
         <script src="app.js"></script>

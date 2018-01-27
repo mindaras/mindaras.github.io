@@ -9,9 +9,10 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer, diceDOM, gamePlaying, sixCounter, scoreToWin;
+var scores, roundScore, activePlayer, diceDOM, gamePlaying, sixCounter, scoreToWin, dicesCount;
 
-diceDOM  = document.querySelector('.dice');
+dice1DOM = document.querySelector('.dice-1');
+dice2DOM = document.querySelector('.dice-2');
 
 // initialize the game
 init();
@@ -22,38 +23,33 @@ init();
 // roll
 document.querySelector('.btn-roll').addEventListener('click', function() {
   if (gamePlaying) {
-    // dice number
-    var dice = Math.floor(Math.random() * 6) + 1;
+    // dice 1 number
+    var dice1 = Math.floor(Math.random() * 6) + 1;
 
     // hide the score choice
     document.getElementById('score-choice').style.display = 'none';
     document.querySelector('.btn-score').style.display = 'none';
+    // hide the dices choice
+    document.querySelector('.radio-wrapper').style.display = 'none';
+    document.querySelector('.radio-wrapper.second').style.display = 'none';
 
     // display the dice
-    diceDOM.style.display = 'block';
-    diceDOM.src = 'dice-' + dice + '.png';
+    dice1DOM.style.display = 'block';
+    dice1DOM.src = 'dice-' + dice1 + '.png';
 
-    if (dice !== 1) {
-      roundScore += dice;
+    if (dicesCount === 2) {
+      // dice 2 number
+      var dice2 = Math.floor(Math.random() * 6) + 1;
+      // display the dice
+      dice2DOM.style.display = 'block';
+      dice2DOM.src = 'dice-' + dice2 + '.png';
+    } else {
+      var dice2 = 0;
+    }
+
+    if (dice1 !== 1 && dice2 !== 1) {
+      roundScore += dice1 + dice2;
       document.getElementById('current-' + activePlayer).textContent = roundScore;
-
-      // if rolled two 6 in a row reset the global score and change turn
-      if (dice === 6 && sixCounter === 1) {
-        // reset the counter
-        sixCounter = 0;
-        // reset the global score
-        scores[activePlayer] = 0;
-        // update the ui
-        document.getElementById('score-' + activePlayer).textContent = 0;
-        // change turn
-        nextPlayer();
-      } else if (dice === 6) {
-        // if previous dice was not 6 increase the six counter
-        sixCounter += 1;
-      } else {
-        // if the dice is not 6 reset the counter
-        sixCounter = 0;
-      }
 
     } else {
       // next player
@@ -76,7 +72,8 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
       document.getElementById('name-' + activePlayer).textContent = 'Winner!'
       document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
       document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
-      diceDOM.style.display = 'none';
+      dice1DOM.style.display = 'none';
+      dice2DOM.style.display = 'none';
       gamePlaying = false;
     } else {
       // next player
@@ -101,6 +98,16 @@ document.querySelector('.btn-score').addEventListener('click', function() {
   }
 });
 
+// number of dices choice
+var radioButtons = document.querySelectorAll('.radio');
+
+// change the dices count
+for (var i = 0; i < radioButtons.length; i++) {
+  radioButtons[i].addEventListener('click', function() {
+    dicesCount = parseInt(this.value);
+  });
+}
+
 
 // FUNCTIONS
 
@@ -122,7 +129,8 @@ function nextPlayer() {
   document.querySelector('.player-1-panel').classList.toggle('active');
 
   // hide the dice
-  diceDOM.style.display = 'none';
+  dice1DOM.style.display = 'none';
+  dice2DOM.style.display = 'none';
 }
 
 // initialize the game
@@ -133,9 +141,13 @@ function init() {
   gamePlaying = true;
   sixCounter = 0;
   scoreToWin = 100;
+  dicesCount = 1;
 
-  document.querySelector('.dice').style.display = 'none';
+  document.querySelector('.dice-1').style.display = 'none';
+  document.querySelector('.dice-2').style.display = 'none';
   document.querySelector('.btn-score').style.display = 'block';
+  document.querySelector('.radio-wrapper').style.display = 'block';
+  document.querySelector('.radio-wrapper.second').style.display = 'block';
   document.getElementById('score-choice').style.display = 'block';
 
   document.getElementById('score-choice').value = '';
