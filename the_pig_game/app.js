@@ -39,7 +39,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
     if (dicesCount === 2) {
       // dice 2 number
-      var dice2 = Math.floor(Math.random() * 1) + 6;
+      var dice2 = Math.floor(Math.random() * 6) + 1;
       // display the dice
       dice2DOM.style.display = 'block';
       dice2DOM.src = 'dice-' + dice2 + '.png';
