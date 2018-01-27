@@ -93,7 +93,7 @@ document.querySelector('.btn-score').addEventListener('click', function() {
   var userChoice = document.getElementById('score-choice').value;
 
   // if user's choice is more than 0 setting the new score to win the game
-  if (userChoice !== 0 && userChoice !== '') {
+  if (userChoice > 1 && userChoice !== '') {
     scoreToWin = userChoice;
     // hiding the choice field
     document.getElementById('score-choice').style.display = 'none';
