@@ -24,7 +24,7 @@ init();
 document.querySelector('.btn-roll').addEventListener('click', function() {
   if (gamePlaying) {
     // dice 1 number
-    var dice1 = Math.floor(Math.random() * 6) + 1;
+    var dice1 = Math.floor(Math.random() * 2) + 5;
 
     // hide the score choice
     document.getElementById('score-choice').style.display = 'none';
@@ -39,7 +39,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
     if (dicesCount === 2) {
       // dice 2 number
-      var dice2 = Math.floor(Math.random() * 6) + 1;
+      var dice2 = Math.floor(Math.random() * 2) + 5;
       // display the dice
       dice2DOM.style.display = 'block';
       dice2DOM.src = 'dice-' + dice2 + '.png';
@@ -50,6 +50,26 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     if (dice1 !== 1 && dice2 !== 1) {
       roundScore += dice1 + dice2;
       document.getElementById('current-' + activePlayer).textContent = roundScore;
+
+      if (dicesCount === 1) {
+          // if rolled two 6 in a row reset the global score and change turn
+         if (dice1 === 6 && sixCounter === 1) {
+           // reset the counter
+           sixCounter = 0;
+           // reset the global score
+           scores[activePlayer] = 0;
+           // update the ui
+           document.getElementById('score-' + activePlayer).textContent = 0;
+           // change turn
+           nextPlayer();
+         } else if (dice1 === 6) {
+           // if previous dice was not 6 increase the six counter
+           sixCounter += 1;
+         } else {
+           // if the dice is not 6 reset the counter
+           sixCounter = 0;
+         }
+      }
 
     } else {
       // next player
