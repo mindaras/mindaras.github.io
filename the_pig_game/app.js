@@ -9,7 +9,7 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer, diceDOM, gamePlaying, sixCounter;
+var scores, roundScore, activePlayer, diceDOM, gamePlaying, sixCounter, scoreToWin;
 
 diceDOM  = document.querySelector('.dice');
 
@@ -24,6 +24,10 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
   if (gamePlaying) {
     // dice number
     var dice = Math.floor(Math.random() * 6) + 1;
+
+    // hide the score choice
+    document.getElementById('score-choice').style.display = 'none';
+    document.querySelector('.btn-score').style.display = 'none';
 
     // display the dice
     diceDOM.style.display = 'block';
@@ -68,7 +72,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     document.getElementById('score-' + activePlayer).textContent = scores[activePlayer];
 
     // check if player won the game
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= scoreToWin) {
       document.getElementById('name-' + activePlayer).textContent = 'Winner!'
       document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
       document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
@@ -83,6 +87,19 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
 
 // new game
 document.querySelector('.btn-new').addEventListener('click', init);
+
+// user score to win choice
+document.querySelector('.btn-score').addEventListener('click', function() {
+  var userChoice = document.getElementById('score-choice').value;
+
+  // if user's choice is more than 0 setting the new score to win the game
+  if (userChoice !== 0 && userChoice !== '') {
+    scoreToWin = userChoice;
+    // hiding the choice field
+    document.getElementById('score-choice').style.display = 'none';
+    document.querySelector('.btn-score').style.display = 'none';
+  }
+});
 
 
 // FUNCTIONS
@@ -115,9 +132,13 @@ function init() {
   activePlayer = 0;
   gamePlaying = true;
   sixCounter = 0;
+  scoreToWin = 100;
 
   document.querySelector('.dice').style.display = 'none';
+  document.querySelector('.btn-score').style.display = 'block';
+  document.getElementById('score-choice').style.display = 'block';
 
+  document.getElementById('score-choice').value = '';
   document.getElementById('score-0').textContent = 0;
   document.getElementById('score-1').textContent = 0;
   document.getElementById('current-0').textContent = 0;
