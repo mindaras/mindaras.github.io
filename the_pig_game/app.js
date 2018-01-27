@@ -24,7 +24,7 @@ init();
 document.querySelector('.btn-roll').addEventListener('click', function() {
   if (gamePlaying) {
     // dice 1 number
-    var dice1 = Math.floor(Math.random() * 2) + 5;
+    var dice1 = Math.floor(Math.random() * 6) + 1;
 
     // hide the score choice
     document.getElementById('score-choice').style.display = 'none';
@@ -39,7 +39,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
     if (dicesCount === 2) {
       // dice 2 number
-      var dice2 = Math.floor(Math.random() * 2) + 5;
+      var dice2 = Math.floor(Math.random() * 1) + 6;
       // display the dice
       dice2DOM.style.display = 'block';
       dice2DOM.src = 'dice-' + dice2 + '.png';
