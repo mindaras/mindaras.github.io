@@ -327,3 +327,73 @@ h2 {
 
 .unpaid .item__percentage { box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1); }
 .unpaid:hover .item__description { font-weight: 900; }
+
+@media screen and (max-width: 991px)
+{
+  .container
+  {
+    width: 100%;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    padding: 0 20px;
+  }
+}
+@media screen and (max-width: 767px)
+{
+  .budget
+  {
+    width: 100%;
+    padding: 0 20px;
+  }
+  .budget__value
+  {
+    font-size: 34px;
+    margin-bottom: 10px;
+  }
+  .add__container
+  {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    flex-direction: column;
+  }
+  .add__type
+  {
+    width: 100%;
+  }
+  .add__description
+  {
+    width: 100%;
+    margin-top: 5px;
+  }
+  .add__value
+  {
+    width: 100%;
+    margin: 0;
+    margin-top: 5px;
+  }
+  .add__btn
+  {
+    margin: 0;
+    margin-top: 10px;
+  }
+  .container
+  {
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 30px 20px;
+  }
+  .income
+  {
+    width: 100%;
+    margin: 0;
+  }
+  .expenses
+  {
+    width: 100%;
+    margin: 0;
+    margin-top: 30px;
+  }
+}
