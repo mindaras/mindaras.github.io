@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="./css/m_style.css">
+  <title>Quiz App</title>
+</head>
+<body>
+
+  <div class="container index">
+    <div class="triangle"></div>
+
+      <div class="container__index-content">
+        <h1 class="title">English quiz</h1>
+        <h3 class="subtitle">Subject:</h3>
+        <p class="subject" id="subject">Going out</p>
+        <div class="button" id="start">Start</div>
+      </div> <!-- container__index-content -->
+
+      <div class="container__game-content">
+        <div class="game-head">
+          <div class="question-counter"><span id="currentQuestion">1</span>/<span id="totalQuestions">10</span></div>
+          <p class="question" id="question">What is the meaning of ‘dog’?</p>
+        </div> <!-- game-head -->
+        <div class="answer-options">
+          <div class="answer-option" data-answer-id="1">Katė</div>
+          <div class="answer-option" data-answer-id="2">Dramblys</div>
+          <div class="answer-option" data-answer-id="3">Šuo</div>
+          <div class="answer-option" data-answer-id="4">Lokys</div>
+        </div> <!-- answer-options -->
+        <div class="next" id="next">Next</div>
+      </div> <!-- container__game-content -->
+
+    <div class="container__finish-content">
+      <h2 class="finish__title">Finished!</h2>
+      <p class="finish__subtitle">Result:</p>
+      <p class="finish__percent" id="percent">80%</p>
+      <p class="finish__result" id="result">Very good</p>
+      <div class="finish__buttons">
+        <div class="finish__button" id="checkAnswers">Check answers</div>
+        <div class="finish__button" id="tryAgain">Try again</div>
+      </div> <!-- finish__buttons -->
+    </div> <!-- container__finish-content -->
+
+  <div class="container__answers-content">
+    <ul class="answers__list" id="answerList"></ul> <!-- answers__list -->
+    <div class="answers__button" id="answersTryAgain">Back to start</div>
+  </div> <!-- container__answers-content -->
+
+  </div> <!-- container -->
+
+<script src="./js/bundle.js"></script>
+</body>
+</html>
