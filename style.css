@@ -1,0 +1,52 @@
+.content
+{
+  width: 100%;
+  font-family: 'Open Sans';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.content__title
+{
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 40px;
+  letter-spacing: 0.3px;
+}
+.content__link
+{
+  display: block;
+  width: 150px;
+  padding: 14px 0;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 0 auto;
+  border: 1px solid transparent;
+  letter-spacing: 0.3px;
+  transition: ease .3s;
+}
+@media screen and (min-width: 992px)
+{
+  .content__link:hover
+  {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+  }
+}
+@media screen and (max-width: 767px)
+{
+  .content__title
+  {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+  .content__link
+  {
+    font-size: 14px;
+    padding: 12px 0;
+  }
+}
